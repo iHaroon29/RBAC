@@ -1,11 +1,14 @@
 import {
   CreationOptional,
   DataTypes,
+  ForeignKey,
   InferAttributes,
   InferCreationAttributes,
   Model,
+  NonAttribute,
 } from 'sequelize'
 import connection from '../config/db'
+import Resource from './resource.model'
 
 class SubResource extends Model<
   InferAttributes<SubResource>,
@@ -15,6 +18,8 @@ class SubResource extends Model<
   declare subResourceName: string
   declare subResourceDescription: string
   declare visibility: 'public' | 'private'
+  declare resourceId: ForeignKey<Resource['id']>
+  declare resource?: NonAttribute<Resource>
   declare createdAt: CreationOptional<Date>
   declare updatedAt: CreationOptional<Date>
 }
