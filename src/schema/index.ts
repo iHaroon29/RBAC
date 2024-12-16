@@ -4,7 +4,18 @@ import Resource from './resource.model'
 import SubResource from './subResource.model'
 
 // Resource <-> Sub Resource HasMany Association
-Resource.hasMany(SubResource)
-SubResource.belongsTo(Resource, { foreignKey: 'resourceId' })
+Resource.hasMany(SubResource, {
+  foreignKey: 'resourceId',
+  as: 'subResources',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
+
+SubResource.belongsTo(Resource, {
+  foreignKey: 'resourceId',
+  targetKey: 'id',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
 
 export { Role, Permission, Resource, SubResource }
