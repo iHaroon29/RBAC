@@ -18,7 +18,6 @@ class Permission extends Model<
   declare roleId: number
   declare resourceId: number
   declare subResourceId: number
-  declare scope: string
   declare canRead: boolean
   declare canWrite: boolean
   declare canUpdate: boolean
@@ -39,7 +38,6 @@ Permission.init(
       type: DataTypes.INTEGER,
       references: { key: 'id', model: SubResource },
     },
-    scope: { type: DataTypes.STRING },
     canRead: { type: DataTypes.BOOLEAN, defaultValue: false },
     canWrite: { type: DataTypes.BOOLEAN, defaultValue: false },
     canUpdate: { type: DataTypes.BOOLEAN, defaultValue: false },

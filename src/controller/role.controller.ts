@@ -42,7 +42,6 @@ export const createRole: RequestHandler<
           canRead: permissionCollection.canRead,
           canUpdate: permissionCollection.canUpdate,
           roleId: newRole.id,
-          scope: `${scopeType}:${scopeValue}`,
         })
       }
     }

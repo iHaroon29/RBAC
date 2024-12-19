@@ -40,6 +40,7 @@ export const createResource: RequestHandler<
       error: null,
     })
   } catch (e) {
+    console.log(e)
     if (e instanceof Error)
       res.status(500).json({ data: null, error: e, success: false })
   }
@@ -50,7 +51,11 @@ export const getResources: RequestHandler<{}, {}, {}, {}, {}> = async (
   res
 ) => {
   try {
-    const existingResource = await Resource.findAll({})
+    const existingResource = await Resource.findAll({
+      where: {},
+      include: [{ model: SubResource, as: 'subResources' }],
+    })
+    res.status(200).json(existingResource)
   } catch (e: Error | unknown) {
     if (e instanceof Error)
       res.status(500).json({ message: e.message, stack: e.stack })

@@ -18,7 +18,7 @@ const connection = new Sequelize(
   try {
     await connection.authenticate()
     console.log('DB Authenticated')
-    await connection.sync({ alter: true })
+    await connection.sync({ force: true })
     console.log('DB Models Synced')
   } catch (e) {
     console.error(e)

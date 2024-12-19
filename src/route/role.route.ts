@@ -1,13 +1,19 @@
 import { Router } from 'express'
-import { createResource } from '../controller/resource.controller'
+import { createResource, getResources } from '../controller/resource.controller'
+import { validatePermissionLevel } from '../middleware/permission.middleware'
 
 const roleRouter = Router()
 
 roleRouter.post('/', createResource)
 
-// roleRouter.get('/', (req, res, next) => {
-//   res.status(200).json({ message: 'OK' })
-// })
+roleRouter.get('/', getResources)
+
+roleRouter.get(
+  '/test/:id',
+  validatePermissionLevel(false, ['read']),
+  getResources
+)
+
 // roleRouter.patch('/:id', (req, res, next) => {
 //   res.status(200).json({ message: 'OK' })
 // })
