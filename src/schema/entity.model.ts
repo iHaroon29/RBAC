@@ -16,8 +16,8 @@ class Entity extends Model<
   declare entityName: string
   declare entityDescription: string
   declare createdBy: number
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt: CreationOptional<Date>
+  declare updatedAt: CreationOptional<Date>
 }
 
 Entity.init(

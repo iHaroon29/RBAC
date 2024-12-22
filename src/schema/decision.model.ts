@@ -15,8 +15,8 @@ class Decision extends Model<
   declare decisionName: string
   declare decisionDescription: string
   declare createdBy: number
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt: CreationOptional<Date>
+  declare updatedAt: CreationOptional<Date>
   declare visiblity: boolean
   declare entityId: number
 }

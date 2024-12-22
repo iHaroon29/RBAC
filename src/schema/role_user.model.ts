@@ -1,6 +1,7 @@
 import connection from '../config/db'
 
 import {
+  CreationOptional,
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
@@ -11,14 +12,13 @@ class RoleUser extends Model<
   InferAttributes<RoleUser>,
   InferCreationAttributes<RoleUser>
 > {
-  declare id: number
+  declare id: CreationOptional<number>
   declare roleId: number
   declare userId: number
   declare entityId: number
-  declare scope: string
   declare createdBy: number
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt: CreationOptional<Date>
+  declare updatedAt: CreationOptional<Date>
 }
 
 RoleUser.init(
@@ -27,7 +27,6 @@ RoleUser.init(
     roleId: { type: DataTypes.INTEGER, allowNull: false },
     userId: { type: DataTypes.INTEGER, allowNull: false },
     entityId: { type: DataTypes.INTEGER, allowNull: false },
-    scope: { type: DataTypes.STRING, allowNull: false },
     createdBy: { type: DataTypes.INTEGER, allowNull: false },
     createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },

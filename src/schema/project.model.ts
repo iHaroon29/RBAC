@@ -1,4 +1,5 @@
 import {
+  CreationOptional,
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
@@ -10,12 +11,12 @@ class Project extends Model<
   InferAttributes<Project>,
   InferCreationAttributes<Project>
 > {
-  declare id: number
+  declare id: CreationOptional<number>
   declare projectName: string
   declare projectDescription: string
   declare createdBy: number
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt: CreationOptional<Date>
+  declare updatedAt: CreationOptional<Date>
   declare entityId: number
 }
 

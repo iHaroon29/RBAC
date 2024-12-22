@@ -18,6 +18,14 @@ class Permission extends Model<
   declare roleId: number
   declare resourceId: number
   declare subResourceId: number
+  declare scopeType:
+    | 'global'
+    | 'resource'
+    | 'subResource'
+    | 'entity'
+    | 'subResource'
+    | 'user'
+  declare scopeValue: string
   declare canRead: boolean
   declare canWrite: boolean
   declare canUpdate: boolean
@@ -37,6 +45,11 @@ Permission.init(
     subResourceId: {
       type: DataTypes.INTEGER,
       references: { key: 'id', model: SubResource },
+    },
+    scopeType: { type: DataTypes.STRING, defaultValue: 'global' },
+    scopeValue: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     canRead: { type: DataTypes.BOOLEAN, defaultValue: false },
     canWrite: { type: DataTypes.BOOLEAN, defaultValue: false },

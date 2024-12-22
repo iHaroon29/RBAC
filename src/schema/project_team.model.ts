@@ -1,6 +1,7 @@
 import connection from '../config/db'
 
 import {
+  CreationOptional,
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
@@ -11,12 +12,12 @@ class ProjectTeam extends Model<
   InferAttributes<ProjectTeam>,
   InferCreationAttributes<ProjectTeam>
 > {
-  declare id: number
+  declare id: CreationOptional<number>
   declare projectId: number
   declare teamId: number
   declare entityId: number
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt: CreationOptional<Date>
+  declare updatedAt: CreationOptional<Date>
   declare createdBy: number
 }
 

@@ -37,6 +37,8 @@ export const createRole: RequestHandler<
         await Permission.create({
           resourceId,
           subResourceId,
+          scopeValue: scopeValue ?? null,
+          scopeType: scopeType ?? 'global',
           canWrite: permissionCollection.canWrite,
           canDelete: permissionCollection.canDelete,
           canRead: permissionCollection.canRead,

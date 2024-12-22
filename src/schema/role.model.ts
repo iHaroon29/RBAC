@@ -11,7 +11,6 @@ class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> {
   declare id: CreationOptional<number>
   declare roleName: string
   declare roleDescription: string
-  declare scope: 'global' | 'project' | 'team' | 'personal'
   declare dashboardType: 'admin' | 'power' | 'normal' | 'guest'
   declare createdAt: CreationOptional<Date>
   declare updatedAt: CreationOptional<Date>
@@ -25,7 +24,6 @@ Role.init(
       autoIncrement: true,
       allowNull: false,
     },
-    scope: { type: DataTypes.STRING, allowNull: false },
     roleName: { type: DataTypes.STRING, allowNull: false },
     dashboardType: { type: DataTypes.STRING, defaultValue: 'guest' },
     roleDescription: {

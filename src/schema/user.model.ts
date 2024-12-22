@@ -1,4 +1,5 @@
 import {
+  CreationOptional,
   DataTypes,
   InferAttributes,
   InferCreationAttributes,
@@ -7,14 +8,14 @@ import {
 import connection from '../config/db'
 
 class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
-  declare id: number
+  declare id: CreationOptional<number>
   declare name: string
   declare email: string
   declare password: string
   declare entityId: number
   declare createdBy: number
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt: CreationOptional<Date>
+  declare updatedAt: CreationOptional<Date>
 }
 
 User.init(

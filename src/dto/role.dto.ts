@@ -3,7 +3,13 @@ interface RoleDTO {
   roleDescription?: string
   dashboardType: 'admin' | 'power' | 'normal' | 'guest'
   resourceCollection: Array<ResourcePermissionCollection>
-  scopeType: string
+  scopeType:
+    | 'global'
+    | 'resource'
+    | 'subResource'
+    | 'entity'
+    | 'subResource'
+    | 'user'
   scopeValue: string
 }
 
